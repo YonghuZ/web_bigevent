@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./assets/css/login.css">
     <!-- 导入layui样式 -->
     <link rel="stylesheet" href="./assets/lib/layui/css/layui.css">
+
 </head>
 
 <body>
@@ -19,9 +20,11 @@
     </div>
 
     <!-- 登录注册 -->
-    <div class="loginAndRegBox">
+    <div class="loginAndRegBox glass-container">
         <!-- 登录标题 -->
-        <div class="title-box"></div>
+        <div class="reveal">Welcome to Bigevent</div>
+
+        <!-- <div class="title-box"></div> -->
         <!-- 登录 -->
         <div class="login-box">
             <!-- 登录的表单 -->
@@ -74,6 +77,20 @@
             </form>
         </div>
     </div>
+    <script>
+        let duration = 0.8;
+        let delay = 0.3;
+        let revealText = document.querySelector(".reveal");
+        let letters = revealText.textContent.split("");
+        revealText.textContent = "";
+        let middle = letters.filter(e => e !== " ").length / 2;
+        letters.forEach((letter, i) => {
+            let span = document.createElement("span");
+            span.textContent = letter;
+            span.style.animationDelay = `${delay + Math.abs(i - middle) * 0.1}s`;
+            revealText.append(span);
+        });
+    </script>
     <!-- 导入layui的js文件 -->
     <script src="./assets/lib/layui/layui.all.js"></script>
     <!-- 导入jQuery文件 -->

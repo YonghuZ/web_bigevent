@@ -4,8 +4,180 @@ body {
     padding: 0;
     height: 100%;
     width: 100%;
-    background: url('../images/飘落.gif') no-repeat center;
+    background: url('../images/login_bg.jpg') no-repeat center;
     background-size: cover;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,400i,700");
+.reveal {
+    padding: 25px 40px;
+    position: relative;
+    display: flex;
+    color: #ffffff;
+    font-size: 2em;
+    /* font-family: Raleway, sans-serif; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    white-space: pre;
+}
+
+.reveal span {
+    opacity: 0;
+    transform: scale(0);
+    animation: fadeIn 2.4s forwards;
+}
+
+.reveal::before,
+.reveal::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    height: 100%;
+    background: white;
+    opacity: 0;
+    transform: scale(0);
+}
+
+
+/* .reveal::before {
+    left: 50%;
+    animation: slideLeft 1.5s cubic-bezier(0.7, -0.6, 0.3, 1.5) forwards;
+}
+
+.reveal::after {
+    right: 50%;
+    animation: slideRight 1.5s cubic-bezier(0.7, -0.6, 0.3, 1.5) forwards;
+} */
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideLeft {
+    to {
+        left: -6%;
+        opacity: 1;
+        transform: scale(0.9);
+    }
+}
+
+@keyframes slideRight {
+    to {
+        right: -6%;
+        opacity: 1;
+        transform: scale(0.9);
+    }
+}
+
+.text-magic {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(2.4);
+    width: 300px;
+    font-size: 36px;
+    font-family: Raleway, Verdana, Arial;
+    color: #fff;
+}
+
+.white {
+    position: absolute;
+    left: -10px;
+    width: 100%;
+    height: 3px;
+    background: #000;
+    z-index: 4;
+    animation: whiteMove 3s ease-out infinite;
+}
+
+.text-magic::before {
+    content: attr(data-word);
+    position: absolute;
+    top: 0;
+    left: 0.5px;
+    height: 0px;
+    color: rgba(255, 255, 255, 0.9);
+    overflow: hidden;
+    z-index: 2;
+    animation: redShadow 1s ease-in infinite;
+    filter: contrast(200%);
+    text-shadow: 1px 0 0 red;
+}
+
+.text-magic::after {
+    content: attr(data-word);
+    position: absolute;
+    top: 0;
+    left: -3px;
+    height: 36px;
+    color: rgba(255, 255, 255, 0.8);
+    overflow: hidden;
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.9);
+    animation: redHeight 1.5s ease-out infinite;
+    filter: contrast(200%);
+    text-shadow: -1px 0 0 cyan;
+    mix-blend-mode: darken;
+}
+
+@keyframes redShadow {
+    20% {
+        height: 32px;
+    }
+    60% {
+        height: 6px;
+    }
+    100% {
+        height: 42px;
+    }
+}
+
+@keyframes redHeight {
+    20% {
+        height: 42px;
+    }
+    35% {
+        height: 12px;
+    }
+    50% {
+        height: 40px;
+    }
+    60% {
+        height: 20px;
+    }
+    70% {
+        height: 34px;
+    }
+    80% {
+        height: 22px;
+    }
+    100% {
+        height: 0px;
+    }
+}
+
+@keyframes whiteMove {
+    8% {
+        top: 38px;
+    }
+    14% {
+        top: 8px;
+    }
+    20% {
+        top: 42px;
+    }
+    32% {
+        top: 2px;
+    }
+    99% {
+        top: 30px;
+    }
 }
 
 .layui-main img {
@@ -16,19 +188,44 @@ body {
 .loginAndRegBox {
     width: 450px;
     height: 290px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.678);
     position: absolute;
     border-radius: 6px;
-    opacity: .8;
-    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.712);
+    opacity: .9;
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.479);
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
 }
 
+
+/* h1 {
+    font: bold 200% Consolas, Monaco, monospace;
+    border-right: 0.1em solid;
+    width: 16.5rem;
+    width: 26ch;
+    margin: 2em 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3s steps(26, end), cursor-blink 0.3s step-end infinite alternate;
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+}
+
+@keyframes cursor-blink {
+    50% {
+        border-color: transparent;
+    }
+} */
+
 .title-box {
     height: 80px;
     background: url('../images/login_title.png') no-repeat center;
+    opacity: 0.7;
 }
 
 .reg-box {
@@ -52,6 +249,10 @@ body {
     position: relative;
 }
 
+.links a:hover {
+    color: #fff;
+}
+
 .layui-icon {
     position: absolute;
     left: 10px;
@@ -60,4 +261,40 @@ body {
 
 .layui-form-item .layui-input {
     padding-left: 32px;
+}
+
+.layui-btn:hover {
+    box-shadow: 0 0 0 50vmax rgba(0, 0, 0, .5);
+}
+
+.loginAndRegBox .layui-input {
+    color: #fff;
+    /* text-shadow: 1px 1px 0 #fff; */
+    margin-right: 8;
+    background-color: transparent;
+    box-shadow: inset 2px 2px 5px #fff, inset -5px -5px 10px #fff;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.loginAndRegBox .layui-input:focus {
+    box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+}
+
+
+/* 毛玻璃 */
+
+.glass-container {
+    color: white;
+    gap: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 191, 255, 0.08);
+    box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px;
+    border: 2px rgba(255, 255, 255, 0.4) solid;
+    border-bottom: 2px rgba(40, 40, 40, 0.35) solid;
+    border-right: 2px rgba(40, 40, 40, 0.35) solid;
 }
