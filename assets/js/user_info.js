@@ -26,4 +26,29 @@ $(function() {
             }
         })
     }
+
+    $("#btnReset").on("click", function(e) {
+        // 阻止默认重置行为
+        e.preventDefault();
+        initUserInfo();
+    })
+
+    // 表单提交的监听事件
+    $(".layui-form").on("submit", function(e) {
+        // 阻止表单默认提交行为
+        e.preventDefault();
+        $.ajax({
+            method: "POST",
+            url: "/my/userinfo",
+            data: $(this).serialize(),
+            success: function(res) {
+                if (res.status !== 0) {
+                    return layer.msg(res.message);
+                }
+                layer.msg(res.message);
+                // 调用父页面中的方法重新渲染用户头像
+                window.parent.getUserInfo();
+            }
+        })
+    })
 })
